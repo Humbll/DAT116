@@ -17,4 +17,10 @@ saveas(gcf, 'plots/plot.png');
 
 
     
+arf = sigspectrum(out.foobarb)
+arfsum = sum(arf)
+arflength = length(arf)
+averagearf = arfsum/arflength 
+[maxarf,index] = max(arf)
+snrarf= maxarf/averagearf
 

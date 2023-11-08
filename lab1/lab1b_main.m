@@ -1,0 +1,3 @@
+sigview(sin)
+
+sigspectrum(sin)
