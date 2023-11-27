@@ -1,8 +1,7 @@
 close all
-sigview(sin_unfiltered)
-
-arf = sigspectrum(sin_unfiltered);
-sumarf = sum(arf)
+sigview(sinfiltered)
+arf = sigspectrum(sinfiltered);
+sumarf = sum(arf) 
 [max_pow,sin_index] = max(arf);
 SNR = 10*log10(max_pow / (sumarf-max_pow))
 max_pow
