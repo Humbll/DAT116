@@ -1,0 +1,33 @@
+C = 10*10^-9;  
+p1 = (0.22+3.05i)*10^4; 
+p2 = (0.22-.05i)*10^4; 
+p3 = (0.55+1.89i)*10^4; 
+p4 = (0.55-1.89i)*10^4; 
+% p1 = (0.6858)*10^4;  single pole
+
+
+R = abs((1/C) * (1 / sqrt(p1 * p2)));
+A = abs(3 + (p1 + p2) / sqrt(p1 * p2));
+
+disp(A);
+disp(R);
+
+R2 = abs((1/C) * (1 / sqrt(p3 * p4)));
+A2 = abs(3 + (p3 + p4) / sqrt(p3 * p4));
+disp(A2);
+disp(R2);
+
+
+Wp = 5e3 ;
+Ws = 10.5e3 ;
+Rp = 2 ;
+Rs = 35 ;
+
+[n,Wn] = buttord(Wp,Ws,3,60)
+order = cheb1ord(Wp, Ws Rp, Rs, 's') ;
+
+
+
+
+
+
