@@ -31,32 +31,38 @@ f = logspace(3, 5, 1000) ;
 %% butter
 [n,Wn] = buttord(Wp,Ws,Rp, Rs, 's') ;
 [z,p,k] = butter(n,Wn,'s');
-
+title('Pole-zero response Butterworth');
+splane(z/1000,p/1000)
 %% cheby 1
 [n1,a] = cheb1ord(Wp,Ws,Rp, Rs, 's') ;
 [z1,p1,k1]  = cheby1(n1,Rp,Wp,'s');
-
+title('Pole-zero response Cheby');
+splane(z1/1000,p1/1000)
 %% cheby 2
 [n2,a2]  = cheb2ord(Wp,Ws,Rp, Rs, 's') ;
 [z2,p2,k2]   = cheby2(n2,Rp,Wp,'s');
-
+title('Pole-zero response Cheby');
+splane(z2/1000,p2/1000)
 %% ellip
 [n3,a3] = ellipord(Wp,Ws,Rp,Rs,'s');
 [z3,p3,k3]  = ellip(n3,Rp,Rs,Wp,'s')
-
-
+title('Pole-zero response ellip')
+splane(z3/1000,p3/1000)
+%%
 hold on
-% splane(z1,p1);
 sys = zpk(z1,p1,k1)
 [Num, Den]=tfdata(sys)
 [top,down] = zp2tf(z1,p1,k1);
 
 
-w=logspace(-1,5);
-[h1,w1] = freqs(top,down, 2*pi*logspace(0,5,10000) );
-plot((w1/(pi*2000)),mag2db(abs(h1)));
-grid on
-
+w = logspace(3, 6, 1000);  % Adjusted frequency range from 1 Hz to 100 kHz
+[h1, w1] = freqs(top, down, w);
+plot(w1/(2*pi), mag2db(abs(h1)));
+set(gca, 'XScale', 'log'); 
+grid on;
+xlabel('Frequency (Hz)');
+ylabel('Magnitude (dB)');
+title('Frequency Response');
 %%
 C = 10*10^-9;  
 p1 = (-0.8273 + 1.2964i)*10^4; 
@@ -76,24 +82,24 @@ A2 = abs(3 + (p3 + p4) / sqrt(p3 * p4));
 disp(A2);
 disp(R2);
     
+%%
 
-% 
-% 
-% mag = abs(h);
-% phase = angle(h);
-% phasedeg = phase*180/pi;
-% 
-% subplot(2,1,1)
-% loglog(w,mag2db(mag))
-% grid on
-% xlabel('Frequency (rad/s)')
-% ylabel('Magnitude')
-% 
-% subplot(2,1,2)
-% semilogx(w,phasedeg)
-% grid on
-% xlabel('Frequency (rad/s)')
-% ylabel('Phase (degrees)')
+
+mag = abs(h);
+phase = angle(h);
+phasedeg = phase*180/pi;
+
+subplot(2,1,1)
+loglog(w,mag2db(mag))
+grid on
+xlabel('Frequency (rad/s)')
+ylabel('Magnitude')
+
+subplot(2,1,2)
+semilogx(w,phasedeg)
+grid on
+xlabel('Frequency (rad/s)')
+ylabel('Phase (degrees)')
 % 
 % 
 % % title('Chebyshev Type 2 Filter Frequency Response');
