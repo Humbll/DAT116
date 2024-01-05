@@ -1,7 +1,7 @@
-% lutix4 = lutix(4)
-% lutdata4 = lutdata(4)
-% lutadata15 = lutdata(15)
-% lutix15 = lutix(15)
+lutix4 = lutix(4)
+lutdata4 = lutdata(4)
+lutadata15 = lutdata(15)
+lutix15 = lutix(15)
 
 
 % function lutixprint = quant(a) 

@@ -3,7 +3,7 @@
 
 sigview(out.sin)
 arf = sigspectrum(out.sin)
-sumarf = sum(arf(1:128));
+sumarf = sum(arf(1:256));
 [maxpow,sin_index] = max(arf);
 SNR = 10*log10(maxpow/(sumarf-maxpow));
 noisepow = sumarf-maxpow;

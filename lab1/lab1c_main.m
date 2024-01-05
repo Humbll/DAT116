@@ -1,2 +1,4 @@
-sigview(sin_unfiltered)
-sigspectrum(sin_unfiltered)
+close all
+
+sigview(sin_filtered)
+sigspectrum(sin_filtered)
