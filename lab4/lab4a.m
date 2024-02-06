@@ -39,10 +39,10 @@ splane(z/1000,p/1000)
 title('Pole-zero response Cheby');
 splane(z1/1000,p1/1000)
 %% cheby 2
-[n2,a2]  = cheb2ord(Wp,Ws,Rp, Rs, 's') ;
-[z2,p2,k2]   = cheby2(n2,Rp, Wp,'s');
-title('Pole-zero response Cheby');
-splane(z2/1000,p2/1000)
+[n2, a2] = cheb2ord(Wp, Ws, Rp, Rs, 's');
+[z2, p2, k2] = cheby2(n2, Rs, Ws, 's');
+title('Pole-zero response Cheby Type II');
+splane(z2/1000, p2/1000)
 %% ellip
 [n3,a3] = ellipord(Wp,Ws,Rp,Rs,'s');
 [z3,p3,k3]  = ellip(n3,Rp,Rs,Wp,'s')

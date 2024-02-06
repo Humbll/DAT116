@@ -1,3 +1,3 @@
 close all
-sigview(sin)
+% sigview(sin)
 sigspectrum(sin)
